@@ -23,7 +23,10 @@ from product import views
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', views.home_page, name='home',),
-    path('detail/<int:product_id>', views.detail_page, name='detail')
+    path('detail/<int:product_id>', views.detail_page, name='detail'),
+    path('comment/<int:product_id>', views.comment_views, name='comment'),
+    path('rating/<int:product_id>', views.rating_views, name='rating'),
+    path('orders/<int:product_id>', views.order_create, name='order_create'),
 
 ]
 
@@ -32,4 +35,5 @@ urlpatterns += [
             {'document_root': settings.MEDIA_ROOT, }),
     re_path(r'^static/(?P<path>.*)$', serve,
             {'document_root': settings.STATIC_ROOT}),
+    re_path(r'^rating/(?P<product_id>.*)$', serve,)
 ]
